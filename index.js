@@ -1,6 +1,10 @@
-async function getWeatherData() {
+const container = document.querySelector('.container');
+
+
+
+async function getWeatherData(location) {
 	const apiKey = 'WHPCRHSJ4E8JK3YF8LRD3ETR9'
-	const url = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/tampere?key=${apiKey}`;
+	const url = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${location}?key=${apiKey}`;
 	try {
 		const response = await fetch(url);
 		if (!response.ok) {
