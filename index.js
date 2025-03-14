@@ -56,12 +56,23 @@ function generateWeatherCard(weatherObject) {
 	container.appendChild(weatherCard);
 
 	const locationHeader = document.createElement('h3');
-	locationHeader.textContent = weatherObject.location;
-
 	const currentTemperature = document.createElement('p');
-	currentTemperature.textContent = weatherObject.currentTemp;
+	const feelsLikeTemp = document.createElement('p');
+	const humidity = document.createElement('p');
+	const wind = document.createElement('p');
 
-	weatherCard.append(locationHeader, currentTemperature);
+	locationHeader.textContent = weatherObject.location;
+	currentTemperature.textContent = weatherObject.currentTemp;
+	feelsLikeTemp.textContent = weatherObject.feelsLike;
+	humidity.textContent = weatherObject.humidity;
+	wind.textContent = weatherObject.wind;
+
+	weatherCard.append(
+		locationHeader, 
+		currentTemperature, 
+		feelsLikeTemp, 
+		humidity, 
+		wind);
 }
 
 function validLocationError() {
