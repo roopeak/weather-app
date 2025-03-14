@@ -16,7 +16,7 @@ function getUserInput() {
 
 async function getWeatherData(location) {
 	const apiKey = 'WHPCRHSJ4E8JK3YF8LRD3ETR9'
-	const url = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${location}?key=${apiKey}`;
+	const url = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${location}?unitGroup=metric&key=${apiKey}`;
 	try {
 		const response = await fetch(url);
 		if (!response.ok) {
@@ -25,14 +25,24 @@ async function getWeatherData(location) {
 
 		const json = await response.json();
 		console.log(json);
+		parseWeatherData(json);
 	} catch (error) {
 		console.error(error.message);
 		validLocationError();
 	}
 }
 
+function parseWeatherData(weatherData) {
+	let weatherObject = {
+		location: '',
+		currentTemp: ''
+	}
+
+	weatherObject.location = weatherData.resolvedAddress.split(',')[0];
+	weatherObject.currentTemp = weatherData.currentConditions.temp;
+	console.log(weatherObject);
+}
+
 function validLocationError() {
 	container.innerHTML += '<p>Enter a valid location!</p>';
 }
-
-// getWeatherData();
