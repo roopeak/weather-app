@@ -40,7 +40,22 @@ function parseWeatherData(weatherData) {
 
 	weatherObject.location = weatherData.resolvedAddress.split(',')[0];
 	weatherObject.currentTemp = weatherData.currentConditions.temp;
+
+	generateWeatherCard(weatherObject);
 	console.log(weatherObject);
+}
+
+function generateWeatherCard(weatherObject) {
+	const weatherCard = document.createElement('div');
+	container.appendChild(weatherCard);
+
+	const locationHeader = document.createElement('h3');
+	locationHeader.textContent = weatherObject.location;
+
+	const currentTemperature = document.createElement('p');
+	currentTemperature.textContent = weatherObject.currentTemp;
+
+	weatherCard.append(locationHeader, currentTemperature);
 }
 
 function validLocationError() {
