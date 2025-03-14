@@ -35,11 +35,17 @@ async function getWeatherData(location) {
 function parseWeatherData(weatherData) {
 	let weatherObject = {
 		location: '',
-		currentTemp: ''
-	}
+		currentTemp: '',
+		feelsLike: '',
+		humidity: '',
+		wind: '',
+	};
 
 	weatherObject.location = weatherData.resolvedAddress.split(',')[0];
 	weatherObject.currentTemp = weatherData.currentConditions.temp;
+	weatherObject.feelsLike = weatherData.currentConditions.feelslike;
+	weatherObject.humidity = weatherData.currentConditions.humidity;
+	weatherObject.wind = weatherData.currentConditions.windspeed;
 
 	generateWeatherCard(weatherObject);
 	console.log(weatherObject);
