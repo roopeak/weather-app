@@ -1,6 +1,18 @@
 const container = document.querySelector('.container');
 
+const searchButton = document.getElementById('searchBtn');
+searchButton.addEventListener('click', () => getUserInput());
 
+function getUserInput() {
+	event.preventDefault();
+	const userInput = document.getElementById('locationSearchInput').value;
+
+	if (userInput) {
+		getWeatherData(userInput);
+	} else {
+		validLocationError();
+	}
+}
 
 async function getWeatherData(location) {
 	const apiKey = 'WHPCRHSJ4E8JK3YF8LRD3ETR9'
@@ -15,7 +27,12 @@ async function getWeatherData(location) {
 		console.log(json);
 	} catch (error) {
 		console.error(error.message);
+		validLocationError();
 	}
+}
+
+function validLocationError() {
+	container.innerHTML += '<p>Enter a valid location!</p>';
 }
 
 // getWeatherData();
