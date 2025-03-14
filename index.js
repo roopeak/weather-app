@@ -53,6 +53,7 @@ function parseWeatherData(weatherData) {
 
 function generateWeatherCard(weatherObject) {
 	const weatherCard = document.createElement('div');
+	weatherCard.classList.add('weather-card');
 	container.appendChild(weatherCard);
 
 	const locationHeader = document.createElement('h3');
@@ -61,11 +62,11 @@ function generateWeatherCard(weatherObject) {
 	const humidity = document.createElement('p');
 	const wind = document.createElement('p');
 
-	locationHeader.textContent = weatherObject.location;
-	currentTemperature.textContent = weatherObject.currentTemp;
-	feelsLikeTemp.textContent = weatherObject.feelsLike;
-	humidity.textContent = weatherObject.humidity;
-	wind.textContent = weatherObject.wind;
+	locationHeader.textContent = `${weatherObject.location} °C`;
+	currentTemperature.textContent = `${weatherObject.currentTemp} °C`;
+	feelsLikeTemp.textContent = `${weatherObject.feelsLike} °C`;
+	humidity.textContent = `${weatherObject.humidity} %`;
+	wind.textContent = `${weatherObject.wind} m/s`;
 
 	weatherCard.append(
 		locationHeader, 
@@ -78,3 +79,5 @@ function generateWeatherCard(weatherObject) {
 function validLocationError() {
 	container.innerHTML += '<p>Enter a valid location!</p>';
 }
+
+getWeatherData('Tampere');
