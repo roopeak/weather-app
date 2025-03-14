@@ -1,3 +1,60 @@
-h1 {
-	color: red;
+body {
+	margin: 0;
+	padding: 0;
+}
+
+header {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 100px;
+	background-color: #352D39;
+	color: white;
+}
+
+.container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin-top: 50px;
+}
+
+.user-input-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+#locationSearchInput {
+	width: 200px;
+	height: 30px;
+	border: none;
+	border-radius: 5px;
+	padding: 5px;
+	background-color: #CBB9A8;
+}
+
+#searchBtn {
+	width: 75px;
+	height: 40px;
+	border-radius: 5px;
+	color: white;
+	background-color: #352D39;
+}
+
+#searchBtn:hover {
+	cursor: pointer;
+	background-color: #CBB9A8;
+	color: #352D39;
+}
+
+.weather-result-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin-top: 50px;
+	width: 300px;
+	height: 400px;
+	color: white;
+	background-color: #352D39;
 }
