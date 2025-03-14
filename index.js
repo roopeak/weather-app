@@ -56,28 +56,25 @@ function generateWeatherCard(weatherObject) {
 	weatherCard.classList.add('weather-card');
 	container.appendChild(weatherCard);
 
-	const locationHeader = document.createElement('h3');
-	const currentTemperature = document.createElement('p');
-	const feelsLikeTemp = document.createElement('p');
-	const humidity = document.createElement('p');
-	const wind = document.createElement('p');
-
-	locationHeader.textContent = `${weatherObject.location} °C`;
-	currentTemperature.textContent = `${weatherObject.currentTemp} °C`;
-	feelsLikeTemp.textContent = `${weatherObject.feelsLike} °C`;
-	humidity.textContent = `${weatherObject.humidity} %`;
-	wind.textContent = `${weatherObject.wind} m/s`;
-
-	weatherCard.append(
-		locationHeader, 
-		currentTemperature, 
-		feelsLikeTemp, 
-		humidity, 
-		wind);
+	weatherCard.innerHTML = `
+		<h3>${weatherObject.location}</h3>
+		<p id='currentTemp'>${weatherObject.currentTemp} °C</p>
+		<p>Feels like: ${weatherObject.feelsLike} °C</p>
+		<p>Humidity: ${weatherObject.humidity} %</p>
+		<p>Wind: ${weatherObject.wind} m/s</p>
+	`;
 }
 
 function validLocationError() {
 	container.innerHTML += '<p>Enter a valid location!</p>';
 }
 
-getWeatherData('Tampere');
+let weatherObject = {
+	location: 'Tampere',
+	currentTemp: '23',
+	feelsLike: '25',
+	humidity: '80',
+	wind: '2.3',
+};
+
+generateWeatherCard(weatherObject);

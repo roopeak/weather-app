@@ -1,6 +1,7 @@
 body {
 	margin: 0;
 	padding: 0;
+	font-family: 'Courier New', Courier, monospace;
 }
 
 header {
@@ -57,4 +58,15 @@ header {
 	height: 400px;
 	color: white;
 	background-color: #352D39;
+}
+
+.weather-card > h3 {
+	font-size: 40px;
+
+	border: 1px solid red;
+}
+
+#currentTemp {
+	font-size: 30px;
+	border: 1px solid red;
 }
