@@ -24,7 +24,6 @@ async function getWeatherData(location) {
 		}
 
 		const json = await response.json();
-		console.log(json);
 		parseWeatherData(json);
 	} catch (error) {
 		console.error(error.message);
@@ -48,33 +47,26 @@ function parseWeatherData(weatherData) {
 	weatherObject.wind = weatherData.currentConditions.windspeed;
 
 	generateWeatherCard(weatherObject);
-	console.log(weatherObject);
 }
 
 function generateWeatherCard(weatherObject) {
+	const weatherCardContainer = document.querySelector('.weather-card-container');
+	weatherCardContainer.innerHTML = '';
 	const weatherCard = document.createElement('div');
 	weatherCard.classList.add('weather-card');
-	container.appendChild(weatherCard);
+	weatherCardContainer.appendChild(weatherCard);
 
 	weatherCard.innerHTML = `
 		<h3>${weatherObject.location}</h3>
-		<p id='currentTemp'>${weatherObject.currentTemp} °C</p>
-		<p>Feels like: ${weatherObject.feelsLike} °C</p>
-		<p>Humidity: ${weatherObject.humidity} %</p>
-		<p>Wind: ${weatherObject.wind} m/s</p>
+		<div id='unitsContainer'>
+			<p id='currentTemp'>${weatherObject.currentTemp}°C</p>
+			<p>Feels like: ${weatherObject.feelsLike}°C</p>
+			<p>Humidity: ${weatherObject.humidity} %</p>
+			<p>Wind: ${weatherObject.wind} m/s</p>
+		</div>
 	`;
 }
 
 function validLocationError() {
 	container.innerHTML += '<p>Enter a valid location!</p>';
 }
-
-let weatherObject = {
-	location: 'Tampere',
-	currentTemp: '23',
-	feelsLike: '25',
-	humidity: '80',
-	wind: '2.3',
-};
-
-generateWeatherCard(weatherObject);

@@ -11,6 +11,7 @@ header {
 	height: 100px;
 	background-color: #352D39;
 	color: white;
+	font-size: 40px;
 }
 
 .container {
@@ -54,19 +55,23 @@ header {
 	flex-direction: column;
 	align-items: center;
 	margin-top: 50px;
-	width: 300px;
+	width: 400px;
 	height: 400px;
 	color: white;
 	background-color: #352D39;
+	border-radius: 10px;
 }
 
 .weather-card > h3 {
 	font-size: 40px;
-
-	border: 1px solid red;
 }
 
 #currentTemp {
 	font-size: 30px;
-	border: 1px solid red;
+}
+
+#unitsContainer {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 }
