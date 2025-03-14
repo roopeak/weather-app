@@ -24,7 +24,6 @@ async function getWeatherData(location) {
 		}
 
 		const json = await response.json();
-		console.log(json);
 		parseWeatherData(json);
 	} catch (error) {
 		console.error(error.message);
@@ -48,31 +47,24 @@ function parseWeatherData(weatherData) {
 	weatherObject.wind = weatherData.currentConditions.windspeed;
 
 	generateWeatherCard(weatherObject);
-	console.log(weatherObject);
 }
 
 function generateWeatherCard(weatherObject) {
+	const weatherCardContainer = document.querySelector('.weather-card-container');
+	weatherCardContainer.innerHTML = '';
 	const weatherCard = document.createElement('div');
-	container.appendChild(weatherCard);
+	weatherCard.classList.add('weather-card');
+	weatherCardContainer.appendChild(weatherCard);
 
-	const locationHeader = document.createElement('h3');
-	const currentTemperature = document.createElement('p');
-	const feelsLikeTemp = document.createElement('p');
-	const humidity = document.createElement('p');
-	const wind = document.createElement('p');
-
-	locationHeader.textContent = weatherObject.location;
-	currentTemperature.textContent = weatherObject.currentTemp;
-	feelsLikeTemp.textContent = weatherObject.feelsLike;
-	humidity.textContent = weatherObject.humidity;
-	wind.textContent = weatherObject.wind;
-
-	weatherCard.append(
-		locationHeader, 
-		currentTemperature, 
-		feelsLikeTemp, 
-		humidity, 
-		wind);
+	weatherCard.innerHTML = `
+		<h3>${weatherObject.location}</h3>
+		<div id='unitsContainer'>
+			<p id='currentTemp'>${weatherObject.currentTemp}°C</p>
+			<p>Feels like: ${weatherObject.feelsLike}°C</p>
+			<p>Humidity: ${weatherObject.humidity} %</p>
+			<p>Wind: ${weatherObject.wind} m/s</p>
+		</div>
+	`;
 }
 
 function validLocationError() {
