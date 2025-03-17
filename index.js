@@ -25,6 +25,7 @@ async function getWeatherData(location) {
 
 		const json = await response.json();
 		parseWeatherData(json);
+		console.log(json);
 	} catch (error) {
 		console.error(error.message);
 		validLocationError();
@@ -34,6 +35,7 @@ async function getWeatherData(location) {
 function parseWeatherData(weatherData) {
 	let weatherObject = {
 		location: '',
+		icon: '',
 		currentTemp: '',
 		feelsLike: '',
 		humidity: '',
@@ -41,6 +43,7 @@ function parseWeatherData(weatherData) {
 	};
 
 	weatherObject.location = weatherData.resolvedAddress.split(',')[0];
+	weatherObject.icon = weatherData.currentConditions.icon;
 	weatherObject.currentTemp = weatherData.currentConditions.temp;
 	weatherObject.feelsLike = weatherData.currentConditions.feelslike;
 	weatherObject.humidity = weatherData.currentConditions.humidity;
@@ -58,6 +61,9 @@ function generateWeatherCard(weatherObject) {
 
 	weatherCard.innerHTML = `
 		<h3>${weatherObject.location}</h3>
+		<div class='weather-icon'>
+			<img id='weatherIcon' src="./weather-icons/${weatherObject.icon}.svg"/>
+		</div>
 		<div id='unitsContainer'>
 			<p id='currentTemp'>${weatherObject.currentTemp}°C</p>
 			<p>Feels like: ${weatherObject.feelsLike}°C</p>
