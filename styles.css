@@ -19,6 +19,7 @@ header {
 	flex-direction: column;
 	align-items: center;
 	margin-top: 50px;
+	gap: 40px;
 }
 
 .user-input-container {
@@ -34,11 +35,12 @@ header {
 	border-radius: 5px;
 	padding: 5px;
 	background-color: #CBB9A8;
+	border: 2px solid #352D39;
 }
 
 #searchBtn {
 	width: 75px;
-	height: 40px;
+	height: 44px;
 	border-radius: 5px;
 	color: white;
 	background-color: #352D39;
@@ -54,16 +56,18 @@ header {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	margin-top: 50px;
+	padding: 20px;
 	width: 400px;
-	height: 400px;
-	color: white;
-	background-color: #352D39;
+	height: 100%;
+	color: #352D39;
+	border: 2px solid #352D39;
+	background-color: #CBB9A8;
 	border-radius: 10px;
 }
 
 .weather-card > h3 {
-	font-size: 40px;
+	font-size: 35px;
+	height: 30px;
 }
 
 #weatherIcon {
