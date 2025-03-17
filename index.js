@@ -25,7 +25,6 @@ async function getWeatherData(location) {
 
 		const json = await response.json();
 		parseWeatherData(json);
-		console.log(json);
 	} catch (error) {
 		console.error(error.message);
 		validLocationError();
