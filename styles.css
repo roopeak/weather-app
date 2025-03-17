@@ -70,6 +70,12 @@ header {
 	height: 30px;
 }
 
+.weather-icon {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
 #weatherIcon {
 	width: 64px;
 	height: 64px;

@@ -36,6 +36,7 @@ function parseWeatherData(weatherData) {
 	let weatherObject = {
 		location: '',
 		icon: '',
+		conditions: '',
 		currentTemp: '',
 		feelsLike: '',
 		humidity: '',
@@ -44,6 +45,7 @@ function parseWeatherData(weatherData) {
 
 	weatherObject.location = weatherData.resolvedAddress.split(',')[0];
 	weatherObject.icon = weatherData.currentConditions.icon;
+	weatherObject.conditions = weatherData.currentConditions.conditions;
 	weatherObject.currentTemp = weatherData.currentConditions.temp;
 	weatherObject.feelsLike = weatherData.currentConditions.feelslike;
 	weatherObject.humidity = weatherData.currentConditions.humidity;
@@ -63,6 +65,7 @@ function generateWeatherCard(weatherObject) {
 		<h3>${weatherObject.location}</h3>
 		<div class='weather-icon'>
 			<img id='weatherIcon' src="./weather-icons/${weatherObject.icon}.svg"/>
+			<p><i>${weatherObject.conditions}</i></p>
 		</div>
 		<div id='unitsContainer'>
 			<p id='currentTemp'>${weatherObject.currentTemp}°C</p>
