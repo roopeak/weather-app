@@ -66,6 +66,11 @@ header {
 	font-size: 40px;
 }
 
+#weatherIcon {
+	width: 64px;
+	height: 64px;
+}
+
 #currentTemp {
 	font-size: 30px;
 }
